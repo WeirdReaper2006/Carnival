@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            ContactNo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewData["c"] as List<Carnival.Models.Customer>)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
+            <td>
+                <button type="button" class="btn btn-default btn-border" onclick="location.href='@Url.Action("Edit", new { id = item.CustomerID })'">Edit</button>
+                <button type="button" class="btn btn-default btn-border" onclick="location.href='@Url.Action("Details", new { id = item.CustomerID })'">Details</button>
+                <button type="button" class="btn btn-default btn-border" onclick="location.href='@Url.Action("Delete", new { id = item.CustomerID })'">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .btn-border {
+        border: 2px solid #000;
+        color: black;
+        background-color: white;
+        transition: box-shadow 0.3s ease-in-out, color 0.2s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+        .btn-border:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the opacity and blur to make it darker */
+            color: white;
+            background-color: black;
+        }
+</style>
+
+<style>
+    th, td {
+        border: 2px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background-color: lightgray;
+    }
+</style>
