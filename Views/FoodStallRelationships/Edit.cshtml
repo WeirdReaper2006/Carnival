@@ -1,0 +1,100 @@
+﻿@model Carnival.Models.FoodStallRelationship
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div style="display:none" id="loader">
+    <img src="~/Content/ZZ5H.gif" height="50px" width="50px" />
+</div>
+
+<h2>Edit</h2>
+
+@using (Ajax.BeginForm("Edit", "FoodStallRelationships", new AjaxOptions { HttpMethod = "POST", OnSuccess = "fnSuccess", OnFailure = "fnFailure", LoadingElementId = "loader", LoadingElementDuration = 2000 }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>FoodStallRelationship</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FoodID, "FoodID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.FoodID, (IEnumerable<SelectListItem>)ViewBag.FoodList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FoodID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StallID, "StallID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StallID, (IEnumerable<SelectListItem>)ViewBag.StallList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StallID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default btn-border" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button onclick="location.href='@Url.Action("Index")'" class="btn btn-default btn-border">Back to List</button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var alertDisplayed = false;
+
+        function fnSuccess(data) {
+            console.log(data);
+            if (!alertDisplayed) {
+                alertDisplayed = true;
+                setTimeout(function () {
+                    var result = confirm("Your Data has been Edited. Do you want to continue?");
+                    if (result) {
+                        $("#loader").hide();
+                    } else {
+                        $("#loader").show();
+                    }
+                }, 2000); // Delay the alert by 2 seconds (adjust as needed)
+            }
+        }
+
+        function fnFailure(data) {
+            console.log(data);
+            if (!alertDisplayed) {
+                alertDisplayed = true;
+                setTimeout(function () {
+                    var result = confirm("Your Data has not been Edited. Do you want to continue?");
+                    if (result) {
+                        $("#loader").hide();
+                    } else {
+                        $("#loader").show();
+                    }
+                }, 2000); // Delay the alert by 2 seconds (adjust as needed)
+            }
+        }
+    </script>
+
+    <style>
+        .btn-border {
+            border: 2px solid #000;
+            color: black;
+            background-color: white;
+            transition: box-shadow 0.3s ease-in-out, color 0.2s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+            .btn-border:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the opacity and blur to make it darker */
+                color: white;
+                background-color: black;
+            }
+    </style>
+}
