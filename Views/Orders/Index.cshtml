@@ -1,0 +1,179 @@
+﻿@model IEnumerable<Carnival.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    int pageSize = 5;
+    int totalCount = Model.Count();
+    int pageCount = (int)Math.Ceiling((double)totalCount / pageSize);
+
+    int currentPage = 1;
+    if (!string.IsNullOrEmpty(Request.QueryString["page"]))
+    {
+        currentPage = int.Parse(Request.QueryString["page"]);
+    }
+
+    var orders = Model.Skip((currentPage - 1) * pageSize).Take(pageSize);
+
+    bool hasPreviousPage = currentPage > 1;
+    bool hasNextPage = currentPage < pageCount;
+    int previousPage = currentPage - 1;
+    int nextPage = currentPage + 1;
+
+    if (previousPage < 1)
+    {
+        previousPage = 1;
+    }
+
+    if (nextPage > pageCount)
+    {
+        nextPage = pageCount;
+    }
+}
+
+<h2>Index</h2>
+
+<p>
+    <button onclick="location.href='@Url.Action("Create")'" class="btn btn-default btn-border">Create New</button>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Customer Name
+        </th>
+        <th>
+            Food Name
+        </th>
+        <th>
+            Stall Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in orders)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food_Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stall.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <button onclick="openEditPopup('@Url.Action("Edit", new { id = item.OrderID })')" class="btn btn-default btn-border" id="EditOrder">Edit</button>
+                <button onclick="location.href='@Url.Action("Details", new { id = item.OrderID })'" class="btn btn-default btn-border">Details</button>
+                <button onclick="location.href='@Url.Action("Delete", new { id = item.OrderID })'" class="btn btn-default btn-border">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="pagination">
+    <a href="@Url.Action("Index", new { page = previousPage })" class="prev @(hasPreviousPage ? "" : "disabled")">&laquo; Previous</a>
+    @for (int i = 1; i <= pageCount; i++)
+    {
+        <a href="@Url.Action("Index", new { page = i })" class="page @(currentPage == i ? "active" : "")">@i</a>
+    }
+    <a href="@Url.Action("Index", new { page = nextPage })" class="next @(hasNextPage ? "" : "disabled")">Next &raquo;</a>
+</div>
+
+@*Used Html.Raw()*@
+<div>
+    @Html.Raw("<h1>Hello World</h1>")
+</div>
+
+@section Scripts {
+    <script>
+        function openEditPopup(url) {
+            $.get(url, function (data) {
+                var modal = $('#editModal');
+                modal.find('.modal-body').html(data);
+                modal.modal('show');
+            });
+        }
+    </script>
+}
+
+<style>
+    .btn-border {
+        border: 2px solid #000;
+        color: black;
+        background-color: white;
+        transition: box-shadow 0.3s ease-in-out, color 0.2s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+        .btn-border:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the opacity and blur to make it darker */
+            color: white;
+            background-color: black;
+        }
+
+    th, td {
+        border: 2px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background-color: lightgray;
+    }
+
+    .pagination {
+        margin-top: 20px;
+    }
+
+        .pagination a {
+            display: inline-block;
+            padding: 8px 12px;
+            margin-right: 5px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+            .pagination a:hover {
+                background-color: #ddd;
+            }
+
+        .pagination .active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination .prev,
+        .pagination .next {
+            font-weight: bold;
+        }
+
+        .pagination .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+</style>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.href='/Orders'">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</div>

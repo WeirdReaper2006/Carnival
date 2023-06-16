@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewData["f"] as List<Carnival.Models.Food_Product>)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td style="white-space: nowrap;">
+                <button onclick="location.href='@Url.Action("Edit", new { id = item.FoodID })'" class="btn btn-default btn-border">Edit</button>
+                <button onclick="location.href='@Url.Action("Details", new { id = item.FoodID })'" class="btn btn-default btn-border">Details</button>
+                <button onclick="location.href='@Url.Action("Delete", new { id = item.FoodID })'" class="btn btn-default btn-border">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .btn-border {
+        border: 2px solid #000;
+        color: black;
+        background-color: white;
+        transition: box-shadow 0.3s ease-in-out, color 0.2s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+        .btn-border:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the opacity and blur to make it darker */
+            color: white;
+            background-color: black;
+        }
+</style>
+
+<style>
+    th, td {
+        border: 2px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background-color: lightgray;
+    }
+</style>
