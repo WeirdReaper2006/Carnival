@@ -23,7 +23,7 @@ namespace Carnival.Controllers
                 if (isValid)
                 {
                     FormsAuthentication.SetAuthCookie(login.Username,false);
-                    return RedirectToAction("Index", "Food_Products");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 ModelState.AddModelError("","Invalid Username or Password");
