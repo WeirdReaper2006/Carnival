@@ -25,12 +25,11 @@
                     <li><button onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout">Contact</button></li>
                     <li><button onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout">Customers</button></li>
                     <li><button onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout">Stalls</button></li>
-                    @*<li><button onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout">Food</button></li>*@
+                    <li><button onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout">Food</button></li>
                     <li><button onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout">Food/Stalls</button></li>
                     <li><button onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout">Orders</button></li>
                 </ul>
             </div>
-            <li>@Html.ActionLink("Food", "Index", "Food_Products")</li>
             @if (User.Identity.IsAuthenticated)
             {
                 <li><a style="color: white;">Dear - @User.Identity.Name</a></li>
