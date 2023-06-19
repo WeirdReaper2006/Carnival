@@ -3,6 +3,7 @@
 namespace Carnival.Controllers
 {
     [OutputCache(Duration = 600, Location = System.Web.UI.OutputCacheLocation.Client)]
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
