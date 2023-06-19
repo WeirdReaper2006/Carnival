@@ -7,7 +7,6 @@ using Carnival.Models;
 namespace Carnival.Controllers
 {
     [OutputCache(Duration = 600, Location = System.Web.UI.OutputCacheLocation.Client)]
-    [Authorize]
     public class StallsController : Controller
     {
         private CarnivalContext db = new CarnivalContext();
