@@ -30,16 +30,18 @@
                     <li><button onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout">Orders</button></li>
                 </ul>
             </div>
+        </div>
+        <ul class="navbar-nav flex-grow-1">
             @if (User.Identity.IsAuthenticated)
             {
-                <li><a style="color: white;">Dear - @User.Identity.Name</a></li>
-                <li>@Html.ActionLink("Logout", "Logout", "Logins")</li>
+                <li style="margin-left: 350px;"><span class="nav-link btn btn-link btn-borderlayout" style="cursor: default;">Dear - @User.Identity.Name</span></li>
+                <li><button onclick="location.href='@Url.Action("Logout", "Logins")'" class="nav-link btn btn-link btn-borderlayout">Logout</button></li>
             }
             else
             {
-                <li>@Html.ActionLink("Login", "Login", "Logins")</li>
+                <li style="margin-left: 350px;"><button onclick="location.href='@Url.Action("Login", "Logins")'" class="nav-link btn btn-link btn-borderlayout">Login</button></li>
             }
-        </div>
+        </ul>
     </nav>
 
     <div class="container body-content">
@@ -65,7 +67,7 @@
         border-color: deepskyblue;
         color: white;
         transition: border-color 0.2s ease-in-out;
-        margin-right: 5px; /* Adjust the margin value to increase or decrease the spacing */
+        margin-right: 10px; /* Adjust the margin value to increase or decrease the spacing */
     }
 
         .btn-borderlayout:hover {
