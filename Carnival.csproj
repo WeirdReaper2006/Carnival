@@ -143,6 +143,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\PlatformsController.cs" />
     <Compile Include="Controllers\StallsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -562,9 +563,11 @@
     <Content Include="Views\Shared\_OrderEdit.cshtml" />
     <Content Include="Views\Logins\Login.cshtml" />
     <Content Include="Views\Logins\Signup.cshtml" />
+    <Content Include="Views\Platforms\SocialMedia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Platform\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
