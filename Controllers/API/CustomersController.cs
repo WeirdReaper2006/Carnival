@@ -27,7 +27,8 @@ namespace Carnival.Controllers.API
 
         // GET: api/Customers/5
         [ResponseType(typeof(Customer))]
-        public async Task<IHttpActionResult> GetCustomer(int id)
+        [HttpGet,Route("api/Customer/Index/{id}")]
+        public async Task<IHttpActionResult> GetCustomer([FromUri]int id)
         {
             Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
@@ -40,7 +41,8 @@ namespace Carnival.Controllers.API
 
         // PUT: api/Customers/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCustomer(int id, Customer customer)
+        [HttpPut,Route("api/Customers/PutCustomer/{id}")]
+        public async Task<IHttpActionResult> PutCustomer([FromUri]int id, [FromBody]Customer customer)
         {
             if (!ModelState.IsValid)
             {
@@ -70,7 +72,7 @@ namespace Carnival.Controllers.API
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Json(new { success = "Your Data has been Edited" });
         }
 
         // POST: api/Customers
@@ -90,7 +92,8 @@ namespace Carnival.Controllers.API
 
         // DELETE: api/Customers/5
         [ResponseType(typeof(Customer))]
-        public async Task<IHttpActionResult> DeleteCustomer(int id)
+        [HttpDelete, Route("api/Customers/DeleteCustomer/{id}")]
+        public async Task<IHttpActionResult> DeleteCustomer([FromUri]int id)
         {
             Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
@@ -101,7 +104,7 @@ namespace Carnival.Controllers.API
             db.Customers.Remove(customer);
             await db.SaveChangesAsync();
 
-            return Ok(customer);
+            return Json(new {success="Your Data has been Deleted"});
         }
 
         protected override void Dispose(bool disposing)

@@ -91,7 +91,8 @@ namespace Carnival.Controllers.API
 
         // DELETE: api/Stalls/5
         [ResponseType(typeof(Stall))]
-        public async Task<IHttpActionResult> DeleteStall(int id)
+        [HttpDelete, Route("api/Stalls/DeleteStall/{id}")]
+        public async Task<IHttpActionResult> DeleteStall([FromUri] int id)
         {
             Stall stall = await db.Stalls.FindAsync(id);
             if (stall == null)
