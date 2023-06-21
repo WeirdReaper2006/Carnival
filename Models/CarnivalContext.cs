@@ -17,5 +17,7 @@ namespace Carnival.Models
         public DbSet<Order> Orders { get; set; }
 
         public System.Data.Entity.DbSet<Carnival.Models.Login> Logins { get; set; }
+
+        public System.Data.Entity.DbSet<Carnival.Models.GetOrderLinq> GetOrderLinqs { get; set; }
     }
 }

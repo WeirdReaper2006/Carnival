@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\FoodStallRelationshipsController.cs" />
     <Compile Include="Controllers\Food_ProductsController.cs" />
+    <Compile Include="Controllers\GetOrdersLinqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -204,12 +205,17 @@
     <Compile Include="Migrations\202306190631385_addedsignupform.designer.cs">
       <DependentUpon>202306190631385_addedsignupform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306210553298_addedstoredprocedure.cs" />
+    <Compile Include="Migrations\202306210553298_addedstoredprocedure.designer.cs">
+      <DependentUpon>202306210553298_addedstoredprocedure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CarnivalContext.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Datatable.cs" />
     <Compile Include="Models\FoodStallRelationship.cs" />
     <Compile Include="Models\Food_Product.cs" />
+    <Compile Include="Models\GetOrderLinq.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Stall.cs" />
@@ -564,6 +570,7 @@
     <Content Include="Views\Logins\Login.cshtml" />
     <Content Include="Views\Logins\Signup.cshtml" />
     <Content Include="Views\Platforms\SocialMedia.cshtml" />
+    <Content Include="Views\GetOrdersLinq\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -613,6 +620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306190631385_addedsignupform.resx">
       <DependentUpon>202306190631385_addedsignupform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306210553298_addedstoredprocedure.resx">
+      <DependentUpon>202306210553298_addedstoredprocedure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

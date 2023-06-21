@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Carnival.Models.GetOrderLinq>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Customer Name
+        </th>
+        <th>
+            Contact No
+        </th>
+        <th>
+            Food
+        </th>
+        <th>
+            Stall Name
+        </th>
+        <th>
+            Quantity
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stall_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+        </tr>
+    }
+
+</table>
