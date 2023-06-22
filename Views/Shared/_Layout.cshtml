@@ -20,21 +20,24 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li><button onclick="location.href='@Url.Action("Index", "Home")'" class="nav-link btn btn-link btn-borderlayout">Home</button></li>
-                    <li><button onclick="location.href='@Url.Action("About", "Home")'" class="nav-link btn btn-link btn-borderlayout">About</button></li>
-                    <li><button onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout">Contact</button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout">Customers</button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout">Stalls</button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout">Food</button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout">Food/Stalls</button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout">Orders</button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Home")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Home" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("About", "Home")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="About" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Contact" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Customers" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Stalls" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Food" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Food/Stalls" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Orders" data-hover-text-new="Hello"></button></li>
                 </ul>
             </div>
         </div>
-        <ul class="navbar-nav flex-grow-1">
-            @if (User.Identity.IsAuthenticated)
+        <ul class="navbar-nav flex-grow-1" style="padding-left:350px">
+           @if (User.Identity.IsAuthenticated)
             {
-                <li style="margin-left: 350px;"><span class="nav-link btn btn-link btn-borderlayout" style="cursor: default;">Dear - @User.Identity.Name</span></li>
+                <div id="tooltip">
+                    <li><span class="nav-link btn btn-link btn-borderlayout">Dear - @User.Identity.Name</span></li>
+                    <span id="tooltipText">Your Dashboard</span>
+                </div>
                 <li><button onclick="location.href='@Url.Action("Logout", "Logins")'" class="nav-link btn btn-link btn-borderlayout">Logout</button></li>
             }
             else
@@ -70,9 +73,57 @@
         margin-right: 10px; /* Adjust the margin value to increase or decrease the spacing */
     }
 
+        .btn-borderlayout::after {
+            content: attr(data-hover-text); /* default content */
+        }
+
+
+
         .btn-borderlayout:hover {
             border-color: red;
             color: black;
             background-color: yellow;
         }
+
+            .btn-borderlayout:hover::after {
+                content: attr(data-hover-text-new); /* new content on hover */
+            }
+</style>
+
+<style type="text/css">
+    #tooltip{
+        position:relative;
+        cursor:pointer;
+        border-bottom:2px dotted;
+        font-weight:bold;
+        font-family:sans-serif;
+    }
+    #tooltipText{
+        position:absolute;
+        left:50%;
+        top:0;
+        transform: translateX(-50%);
+        background-color: #000;
+        color: #fff;
+        white-space:nowrap;
+        padding:10px 15px;
+        border-radius:7px;
+        visibility:hidden;
+        opacity:0;
+        transition:opacity 1s ease;
+    }
+    #tooltipText::before{
+        content:"";
+        position:absolute;
+        left:50%;
+        top:-65%;
+        transform:translateX(-50%);
+        border:15px solid;
+        border-color:#0000 #0000 #000 #0000;
+    }
+    #tooltip:hover #tooltipText{
+        top:130%;
+        visibility:visible;
+        opacity:1;
+    }
 </style>
