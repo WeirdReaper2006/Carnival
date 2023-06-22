@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Carnival.Controllers
 {
-    public class PlatformsController : Controller
+    public class RandomsController : Controller
     {
         // GET: Platforms
-        public ActionResult SocialMedia()
+        public ActionResult FoodPics()
         {
             return View();
         }
