@@ -128,6 +128,11 @@
                 </div>
             </div>
         </div>*@
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My Carnival Program</p>
+        </footer>
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -184,7 +189,7 @@
         border-radius:7px;
         visibility:hidden;
         opacity:0;
-        transition:opacity 1s ease;
+        transition:opacity 0.5s ease;
     }
     #tooltipText::before{
         content:"";
