@@ -6,6 +6,36 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!-- basic -->
+    <!--<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!-- mobile metas -->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">-->
+    <!-- site metas -->
+    <!--<title>Grand Coffee</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">-->
+    <!-- bootstrap css -->
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.css">-->
+    <!-- style css -->
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/css/style.css">-->
+    <!-- Responsive-->
+    <!--<link rel="stylesheet" href="~/Content/css/responsive.css">-->
+    <!-- fevicon -->
+    <!--<link rel="icon" href="images/fevicon.png" type="image/gif" />-->
+    <!-- Scrollbar Custom CSS -->
+    <!--<link rel="stylesheet" href="~/Content/css/jquery.mCustomScrollbar.min.css">-->
+    <!-- Tweaks for older IEs-->
+    <!--<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">-->
+    <!-- owl stylesheets -->
+    <!--<link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">-->
+
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -20,23 +50,23 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li><button onclick="location.href='@Url.Action("Index", "Home")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Home" data-hover-text-new="Hello"></button></li>
-                    <li><button onclick="location.href='@Url.Action("About", "Home")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="About" data-hover-text-new="Hello"></button></li>
-                    <li><button onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Contact" data-hover-text-new="Hello"></button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Customers" data-hover-text-new="Hello"></button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Stalls" data-hover-text-new="Hello"></button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Food" data-hover-text-new="Hello"></button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Food/Stalls" data-hover-text-new="Hello"></button></li>
-                    <li><button onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout" data-hover-text="Orders" data-hover-text-new="Hello"></button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Home")'" class="nav-link btn btn-link btn-borderlayout">Home</button></li>
+                    <li><button onclick="location.href='@Url.Action("About", "Home")'" class="nav-link btn btn-link btn-borderlayout">About</button></li>
+                    <li><button onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout">Contacxt Us</button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout">Customers</button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout">Stalls</button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout">Food</button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout">Food/Stalls</button></li>
+                    <li><button onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout">Orders</button></li>
                 </ul>
             </div>
         </div>
         <ul class="navbar-nav flex-grow-1" style="padding-left:350px">
-           @if (User.Identity.IsAuthenticated)
+            @if (User.Identity.IsAuthenticated)
             {
                 <div id="tooltip">
-                    <li><span class="nav-link btn btn-link btn-borderlayout">Dear - @User.Identity.Name</span></li>
-                    <span id="tooltipText">Your Dashboard</span>
+                <li><span class="nav-link btn btn-link btn-borderlayout">Dear - @User.Identity.Name</span></li>
+                <span id="tooltipText">Your Dashboard</span>
                 </div>
                 <li><button onclick="location.href='@Url.Action("Logout", "Logins")'" class="nav-link btn btn-link btn-borderlayout">Logout</button></li>
             }
@@ -50,9 +80,54 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Carnival Stall Program</p>
-        </footer>
+        @*<div class="footer_section layout_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <h3 class="useful_text">About</h3>
+                        <p class="footer_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h3 class="useful_text">Menu</h3>
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="/Home/Index">Home</a></li>
+                                <li><a href="/Home/About">About Us</a></li>
+                                <li><a href="/Orders/Index">Orders</a></li>
+                                <li><a href="/Randoms/FoodPics">Menu</a></li>
+                                <li><a href="/Home/Contact">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h1 class="useful_text">Useful Link</h1>
+                        <p class="dummy_text">Adipiscing Elit, sed do Eiusmod Tempor incididunt </p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h1 class="useful_text">Contact Us</h1>
+                        <div class="location_text">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_10">Address : Loram Ipusm</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">Call : +01 1234567890</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">Email : demo@gmail.com</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -60,6 +135,16 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!-- Javascript files-->
+    <!--<script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/jquery-3.0.0.min.js"></script>
+    <script src="~/Content/js/plugin.js"></script>-->
+    <!-- sidebar -->
+    <!--<script src="~/Content/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Content/js/custom.js"></script>-->
 
 </body>
 </html>
@@ -72,22 +157,11 @@
         transition: border-color 0.2s ease-in-out;
         margin-right: 10px; /* Adjust the margin value to increase or decrease the spacing */
     }
-
-        .btn-borderlayout::after {
-            content: attr(data-hover-text); /* default content */
-        }
-
-
-
         .btn-borderlayout:hover {
             border-color: red;
             color: black;
             background-color: yellow;
         }
-
-            .btn-borderlayout:hover::after {
-                content: attr(data-hover-text-new); /* new content on hover */
-            }
 </style>
 
 <style type="text/css">

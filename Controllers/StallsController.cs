@@ -6,7 +6,7 @@ using Carnival.Models;
 
 namespace Carnival.Controllers
 {
-    [OutputCache(Duration = 600, Location = System.Web.UI.OutputCacheLocation.Client)]
+    //[OutputCache(Duration = 600, Location = System.Web.UI.OutputCacheLocation.Client)]
     [Authorize]
     public class StallsController : Controller
     {
@@ -15,7 +15,7 @@ namespace Carnival.Controllers
         // GET: Stalls
         public ActionResult Index()
         {
-            return View(db.Stalls.ToList());
+            return View(db.Stalls.OrderByDescending(x=>x.StallID).Take(1).ToList());
         }
 
         // GET: Stalls/Details/5
