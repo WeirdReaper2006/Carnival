@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -76,7 +72,7 @@ namespace Carnival.Controllers.API
         // POST: api/Stalls
         //[ResponseType(typeof(Stall))]
         [HttpPost, Route("api/Stalls/PostStall")]
-        public async Task<IHttpActionResult> PostStall([FromBody]Stall stall)
+        public async Task<IHttpActionResult> PostStall([FromBody] Stall stall)
         {
             if (!ModelState.IsValid)
             {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Data.SqlClient;
 using System.Web.Mvc;
-using Newtonsoft.Json.Linq;
 using Carnival.Models;
 
 namespace Carnival.Controllers

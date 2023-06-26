@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Carnival.Models;
 using System.Web.Security;
+using Carnival.Models;
 
 namespace Carnival.Controllers
 {
@@ -19,14 +19,14 @@ namespace Carnival.Controllers
         {
             using (var context = new CarnivalContext())
             {
-                bool isValid = context.Logins.Any(x=>x.Username==login.Username &&x.Password==login.Password);
+                bool isValid = context.Logins.Any(x => x.Username == login.Username && x.Password == login.Password);
                 if (isValid)
                 {
-                    FormsAuthentication.SetAuthCookie(login.Username,false);
+                    FormsAuthentication.SetAuthCookie(login.Username, false);
                     return RedirectToAction("FoodPics", "Randoms");
                 }
 
-                ModelState.AddModelError("","Invalid Username or Password");
+                ModelState.AddModelError("", "Invalid Username or Password");
                 return View();
             }
         }
@@ -41,7 +41,7 @@ namespace Carnival.Controllers
         [HttpPost]
         public ActionResult Signup(Login login)
         {
-            using (var context= new CarnivalContext())
+            using (var context = new CarnivalContext())
             {
                 context.Logins.Add(login);
                 context.SaveChanges();
