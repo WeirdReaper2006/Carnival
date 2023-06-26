@@ -66,7 +66,7 @@
             {
                 <div id="tooltip">
                 <li><span id="username" class="nav-link btn btn-link">Dear - @User.Identity.Name</span></li>
-                <span id="tooltipText">Your Dashboard</span>
+                <span id="tooltipText"><a onclick="func1()">Your Dashboard</a></span>
                 </div>
                 <li><button onclick="location.href='@Url.Action("Logout", "Logins")'" class="nav-link btn btn-link btn-borderlayout">Logout</button></li>
             }
@@ -163,6 +163,10 @@
             $("#username").css('color', 'white');
             $("#username").css('margin-right', '10px');
             $("#username").css('background-color', 'lightslategray');
+        });
+
+        $("#tooltipText").click(function () {
+            window.location.href = '/Home/Contact'
         });
     </script>
 
