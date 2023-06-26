@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -17,7 +18,7 @@ namespace Carnival.Controllers
         // GET: Food_Products
         public ActionResult Index()
         {
-            var result = db.FoodProducts.Where(item => item.FoodID == 10 || item.FoodID == 1013);
+            List<Food_Product> result = (List<Food_Product>)db.FoodProducts.Where(item => item.FoodID == 10 || item.FoodID == 1013);
             return View(/*db.FoodProducts.ToList()*/ result);
         }
 

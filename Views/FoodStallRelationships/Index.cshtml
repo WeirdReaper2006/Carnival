@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Carnival.Models.FoodStallRelationship>
+﻿@using Carnival.ViewModels
+@model Carnival.ViewModels.Food_Stall
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +7,7 @@
 
 @{
     int pageSize = 5;
-    int totalCount = Model.Count();
+    int totalCount = Model.food_Products.Count();
     int pageCount = (int)Math.Ceiling((double)totalCount / pageSize);
 
     int currentPage = 1;
@@ -15,7 +16,9 @@
         currentPage = int.Parse(Request.QueryString["page"]);
     }
 
-    var relationships = Model.Skip((currentPage - 1) * pageSize).Take(pageSize);
+    var food = Model.food_Products.Skip((currentPage - 1) * pageSize).Take(pageSize);
+    var stall = Model.stalls.Skip((currentPage - 1) * pageSize).Take(pageSize);
+
 
     bool hasPreviousPage = currentPage > 1;
     bool hasNextPage = currentPage < pageCount;
@@ -50,23 +53,32 @@
         <th></th>
     </tr>
 
-    @foreach (var item in relationships)
+    @foreach (var item in food)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Food_Product.Name)
-            </td>
+                @Html.DisplayFor<string>(modelItem => item.FoodID.Name)
+</td>
             <td>
-                @Html.DisplayFor(modelItem => item.Stall.Name)
-            </td>
-            <td>
-                <button onclick="location.href='@Url.Action("Edit", new { foodID = item.FoodID, stallID = item.StallID })'" class="btn btn-default btn-border">Edit</button>
-                <button onclick="location.href='@Url.Action("Details", new { foodID = item.FoodID, stallID = item.StallID })'" class="btn btn-default btn-border">Details</button>
-                <button onclick="location.href='@Url.Action("Delete", new { foodID = item.FoodID, stallID = item.StallID })'" class="btn btn-default btn-border">Delete</button>
+                <button onclick="location.href='@Url.Action("Edit", new { foodID = item.FoodID })'" class="btn btn-default btn-border">Edit</button>
+                <button onclick="location.href='@Url.Action("Details", new { foodID = item.FoodID })'" class="btn btn-default btn-border">Details</button>
+                <button onclick="location.href='@Url.Action("Delete", new { foodID = item.FoodID })'" class="btn btn-default btn-border">Delete</button>
             </td>
         </tr>
     }
-
+    @foreach (var item in stall)
+    { 
+        <tr>
+            <td>
+                @Html.DisplayFor<string>(modelItem => item.StallID.Name)
+</td>
+            <td>
+                <button onclick="location.href='@Url.Action("Edit", new { stallID = item.StallID })'" class="btn btn-default btn-border">Edit</button>
+                <button onclick="location.href='@Url.Action("Details", new { stallID = item.StallID })'" class="btn btn-default btn-border">Details</button>
+                <button onclick="location.href='@Url.Action("Delete", new { stallID = item.StallID })'" class="btn btn-default btn-border">Delete</button>
+            </td>
+        </tr>
+    }
 </table>
 
 <div class="pagination">
