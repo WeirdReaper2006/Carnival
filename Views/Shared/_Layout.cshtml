@@ -65,7 +65,7 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <div id="tooltip">
-                <li><span class="nav-link btn btn-link btn-borderlayout">Dear - @User.Identity.Name</span></li>
+                <li><span id="username" class="nav-link btn btn-link">Dear - @User.Identity.Name</span></li>
                 <span id="tooltipText">Your Dashboard</span>
                 </div>
                 <li><button onclick="location.href='@Url.Action("Logout", "Logins")'" class="nav-link btn btn-link btn-borderlayout">Logout</button></li>
@@ -140,6 +140,31 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        $("#username").ready(function () {
+            $("#username").css('border', '2px solid');
+            $("#username").css('border-color', 'deepskyblue');
+            $("#username").css('transition', 'border-color 0.2s ease-in-out');
+            $("#username").css('color', '#98FF98');
+            $("#username").css('margin-right', '10px');
+            $("#username").css('background-color', 'lightslategray');
+        });
+
+        $("#username").mouseenter(function () {
+            $("#username").css('border-color', 'red');
+            $("#username").css('color', 'black');
+            $("#username").css('background-color', 'yellow');
+        });
+
+        $("#username").mouseleave(function () {
+            $("#username").css('border', '2px solid');
+            $("#username").css('border-color', 'deepskyblue');
+            $("#username").css('transition', 'border-color 0.2s ease-in-out');
+            $("#username").css('color', 'white');
+            $("#username").css('margin-right', '10px');
+            $("#username").css('background-color', 'lightslategray');
+        });
+    </script>
 
     <!-- Javascript files-->
     <!--<script src="~/Content/js/jquery.min.js"></script>
@@ -156,6 +181,7 @@
 
 <style>
     .btn-borderlayout {
+        background-color:lightslategray;
         border: 2px solid;
         border-color: deepskyblue;
         color: white;
