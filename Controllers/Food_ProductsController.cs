@@ -15,8 +15,8 @@ namespace Carnival.Controllers
         // GET: Food_Products
         public ActionResult Index()
         {
-            var result = db.FoodProducts.Where(item => item.FoodID == 10 || item.FoodID == 1013);
-            return View(/*db.FoodProducts.ToList()*/ result);
+            //var result = db.FoodProducts.Where(item => item.FoodID == 10 || item.FoodID == 1013);
+            return View(db.FoodProducts.ToList() /*result*/);
         }
 
         // GET: Food_Products/Details/5
