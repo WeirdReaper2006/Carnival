@@ -40,6 +40,12 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
+            <!-- Button to open the offcanvas sidebar -->
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                <div style="width: 35px; height: 5px; background-color: red; margin: 6px 0;"></div>
+                <div style="width: 35px; height: 5px; background-color: red; margin: 6px 0;"></div>
+                <div style="width: 35px; height: 5px; background-color: red; margin: 6px 0;"></div>
+            </button>
             <a class="navbar-brand" @*no purpose of using this href="/Home"*@>
                 <img src="/favicon.ico" alt="Logo" />
                 Carnival
@@ -66,8 +72,8 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <div id="tooltip">
-                    <li><span id="username" class="nav-link btn btn-link">Dear - @User.Identity.Name</span></li>
-                    <span id="tooltipText"><a onclick="func1()">Your Dashboard</a></span>
+                <li><span id="username" class="nav-link btn btn-link">Dear - @User.Identity.Name</span></li>
+                <span id="tooltipText"><a onclick="func1()">Your Dashboard</a></span>
                 </div>
                 <li><button onclick="location.href='@Url.Action("Logout", "Logins")'" class="nav-link btn btn-link btn-borderlayout">Logout</button></li>
             }
@@ -81,8 +87,8 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-        <hr  style="width:1903px;"/>
-        @*<div class="footer_section layout_padding">
+    <hr style="width:1903px;" />
+    @*<div class="footer_section layout_padding">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
@@ -131,60 +137,60 @@
             </div>
         </div>*@
 
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My Carnival Program</p>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="width:100%; height:100%;">
-                <div class="container" style="margin-left:0px;">
-                    <div style="text-align:center;">
-                        <a class="navbar-brand" @*no purpose of using this href="/Home"*@ style="margin-left:0px;">
-                            <img src="/favicon.ico" alt="Logo" />
-                            <hr style="width:0px;"/>
-                            <h2>Carnival</h2>
-                        </a>
-                    </div>
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <section class="col-md-4" aria-labelledby="gettingStartedTitle" style="color: white; width: 300px; padding: 0px; padding-left:10px; text-align:left;">
-                        <h2 id="aboutus" style="padding-top:30px; margin-top:10px;">About Us</h2>
-                        <p style="text-align:justify;">
-                            Celebrate at the carnival with thrilling rides, tasty treats, lively performances, and exciting games. It's a vibrant event that caters to all ages and interests. Experience adventure, indulge in delicious food, be entertained by talented performers, and create lasting memories. Join us for a joyous and unforgettable celebration of fun and excitement.
-                        </p>
-                        <p><a class="btn btn-outline-dark btn-borderlayout" href="/Home/About">Learn more &raquo;</a></p>
-                    </section>
-                    <section class="col-md-4" aria-labelledby="librariesTitle" style="color: white; width: 300px; padding: 20px; text-align: left;">
-                        <h2 id="contactus" style="padding-top:30px;">Contact Us</h2>
-                        <p style="text-align:justify;">Thank you for your interest in the carnival! If you have any questions, feedback, or would like to get in touch with us, we're here to help. Celebrate with us at the carnival, where you'll find a world of thrilling rides, tasty treats, lively performances, and exciting games.</p>
-                        <p><a class="btn btn-outline-dark btn-borderlayout" href="/Home/Contact">Learn more &raquo;</a></p>
-                    </section>
-                    <section class="col-md-4" aria-labelledby="hostingTitle" style="color: white; width: 300px; padding: 0px; text-align: left;">
-                        <h2 id="food" style="padding-top:30px;">Food</h2>
-                        <p style="text-align:justify;">Indulge in a mouthwatering feast at the carnival's food section. From classic favorites like cotton candy and popcorn to savory treats like corn dogs and nachos, our wide selection of delicious delights will satisfy your cravings. Treat your taste buds to an unforgettable culinary experience at the carnival!</p>
-                        <p><a class="btn btn-outline-dark btn-borderlayout" href="/Food_Products">Learn more &raquo;</a></p>
-                    </section>
-                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1" style="white-space:nowrap;">
-                            <div style="margin-left:150px;">
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Home")'" class="nav-link btn btn-link btn-borderlayout">Home</button></li>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("About", "Home")'" class="nav-link btn btn-link btn-borderlayout">About</button></li>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout">Contact Us</button></li>
-                            </div>
-                            <div>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout">Customers</button></li>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout">Stalls</button></li>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout">Food</button></li>
-                            </div>
-                            <div>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout">Food/Stalls</button></li>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout">Orders</button></li>
-                                <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("FoodPics", "Randoms")'" class="nav-link btn btn-link btn-borderlayout">Food Pics</button></li>
-                            </div>
-                        </ul>
-                    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My Carnival Program</p>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="width:100%; height:100%;">
+            <div class="container" style="margin-left:0px;">
+                <div style="text-align:center;">
+                    <a class="navbar-brand" @*no purpose of using this href="/Home"*@ style="margin-left:0px;">
+                        <img src="/favicon.ico" alt="Logo" />
+                        <hr style="width:0px;" />
+                        <h2>Carnival</h2>
+                    </a>
                 </div>
-            </nav>
-        </footer>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <section class="col-md-4" aria-labelledby="gettingStartedTitle" style="color: white; width: 300px; padding: 0px; padding-left:10px; text-align:left;">
+                    <h2 id="aboutus" style="padding-top:30px; margin-top:10px;">About Us</h2>
+                    <p style="text-align:justify;">
+                        Celebrate at the carnival with thrilling rides, tasty treats, lively performances, and exciting games. It's a vibrant event that caters to all ages and interests. Experience adventure, indulge in delicious food, be entertained by talented performers, and create lasting memories. Join us for a joyous and unforgettable celebration of fun and excitement.
+                    </p>
+                    <p><a class="btn btn-outline-dark btn-borderlayout" href="/Home/About">Learn more &raquo;</a></p>
+                </section>
+                <section class="col-md-4" aria-labelledby="librariesTitle" style="color: white; width: 300px; padding: 20px; text-align: left;">
+                    <h2 id="contactus" style="padding-top:30px;">Contact Us</h2>
+                    <p style="text-align:justify;">Thank you for your interest in the carnival! If you have any questions, feedback, or would like to get in touch with us, we're here to help. Celebrate with us at the carnival, where you'll find a world of thrilling rides, tasty treats, lively performances, and exciting games.</p>
+                    <p><a class="btn btn-outline-dark btn-borderlayout" href="/Home/Contact">Learn more &raquo;</a></p>
+                </section>
+                <section class="col-md-4" aria-labelledby="hostingTitle" style="color: white; width: 300px; padding: 0px; text-align: left;">
+                    <h2 id="food" style="padding-top:30px;">Food</h2>
+                    <p style="text-align:justify;">Indulge in a mouthwatering feast at the carnival's food section. From classic favorites like cotton candy and popcorn to savory treats like corn dogs and nachos, our wide selection of delicious delights will satisfy your cravings. Treat your taste buds to an unforgettable culinary experience at the carnival!</p>
+                    <p><a class="btn btn-outline-dark btn-borderlayout" href="/Food_Products">Learn more &raquo;</a></p>
+                </section>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" style="white-space:nowrap;">
+                        <div style="margin-left:150px;">
+                        <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Home")'" class="nav-link btn btn-link btn-borderlayout">Home</button></li>
+                        <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("About", "Home")'" class="nav-link btn btn-link btn-borderlayout">About</button></li>
+                        <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout">Contact Us</button></li>
+                </div>
+                <div>
+                    <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout">Customers</button></li>
+                    <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout">Stalls</button></li>
+                    <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout">Food</button></li>
+                </div>
+                <div>
+                    <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout">Food/Stalls</button></li>
+                    <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout">Orders</button></li>
+                    <li style="padding:10px;"><button style="width:100px;" onclick="location.href='@Url.Action("FoodPics", "Randoms")'" class="nav-link btn btn-link btn-borderlayout">Food Pics</button></li>
+                </div>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -236,13 +242,14 @@
 
 <style>
     .btn-borderlayout {
-        background-color:lightslategray;
+        background-color: lightslategray;
         border: 2px solid;
         border-color: deepskyblue;
         color: white;
         transition: border-color 0.2s ease-in-out;
         margin-right: 10px; /* Adjust the margin value to increase or decrease the spacing */
     }
+
         .btn-borderlayout:hover {
             border-color: red;
             color: black;
@@ -251,39 +258,72 @@
 </style>
 
 <style type="text/css">
-    #tooltip{
-        position:relative;
-        cursor:pointer;
-        border-bottom:2px dotted;
-        font-weight:bold;
-        font-family:sans-serif;
+    #tooltip {
+        position: relative;
+        cursor: pointer;
+        border-bottom: 2px dotted;
+        font-weight: bold;
+        font-family: sans-serif;
     }
-    #tooltipText{
-        position:absolute;
-        left:50%;
-        top:0;
+
+    #tooltipText {
+        position: absolute;
+        left: 50%;
+        top: 0;
         transform: translateX(-50%);
         background-color: #000;
         color: #fff;
-        white-space:nowrap;
-        padding:10px 15px;
-        border-radius:7px;
-        visibility:hidden;
-        opacity:0;
-        transition:opacity 0.5s ease;
+        white-space: nowrap;
+        padding: 10px 15px;
+        border-radius: 7px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease;
     }
-    #tooltipText::before{
-        content:"";
-        position:absolute;
-        left:50%;
-        top:-65%;
-        transform:translateX(-50%);
-        border:15px solid;
-        border-color:#0000 #0000 #000 #0000;
+
+        #tooltipText::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -65%;
+            transform: translateX(-50%);
+            border: 15px solid;
+            border-color: #0000 #0000 #000 #0000;
+        }
+
+    #tooltip:hover #tooltipText {
+        top: 130%;
+        visibility: visible;
+        opacity: 1;
     }
-    #tooltip:hover #tooltipText{
-        top:130%;
-        visibility:visible;
-        opacity:1;
+</style>
+
+<style>
+    .fade {
+        transition: opacity 0.5s; /* Customize the duration here */
     }
+</style>
+
+
+<!-- Offcanvas Sidebar -->
+<div class="container-fluid offcanvas offcanvas-start align-items-center bg-black fade" id="demo">
+    <div class="offcanvas-header col">
+        <h1 class="offcanvas-title text-white p-5"><strong>Carnival</strong></h1>
+        <button type="button" class="btn btn-close btn-outline-danger bg-danger" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body align-items-center">
+        <button style="width:200px;" onclick="location.href='@Url.Action("Index", "Home")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Home</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("About", "Home")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">About Us</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("Contact", "Home")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Contact Us</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("Index", "Customers")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Customers</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("Index", "Stalls")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Stalls</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("Index", "Food_Products")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Food</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("Index", "FoodStallRelationships")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Food/Stalls</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("Index", "Orders")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Orders</button>
+        <button style="width:200px;" onclick="location.href='@Url.Action("FoodPics", "Randoms")'" class="nav-link btn btn-link btn-borderlayout p-2 mb-3">Food Pics</button>
+    </div>
+</div>
+
+<style>
+    
 </style>
